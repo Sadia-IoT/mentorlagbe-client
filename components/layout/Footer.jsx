@@ -139,7 +139,7 @@ export default function Footer() {
           <p className="flex items-center gap-1.5">
             Made for curious learners
             <span className="text-accent">✳</span>
-            Dhaka, Bangladesh
+            Chattogram, Bangladesh
           </p>
         </div>
       </div>

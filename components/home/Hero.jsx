@@ -68,7 +68,7 @@ export default function Hero({ stats, subjects }) {
                 Batch spotlight
               </p>
               <p className="mt-1 font-display text-xl leading-tight">
-                HSC Physics, Dhanmondi
+                HSC Physics, Chattogram
               </p>
             </div>
           </div>

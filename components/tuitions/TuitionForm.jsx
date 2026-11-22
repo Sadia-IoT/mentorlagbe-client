@@ -214,7 +214,7 @@ export default function TuitionForm({ mode = "create", tuition = null }) {
               id="location"
               value={values.location}
               onChange={(event) => update("location", event.target.value)}
-              placeholder="e.g. Dhanmondi, Dhaka"
+              placeholder="e.g. Agrabad, Chattogram"
             />
           </Field>
 

@@ -5,7 +5,7 @@ import Avatar from "@/components/layout/Avatar";
 const testimonials = [
   {
     name: "Ayesha Siddiqua",
-    role: "HSC student · Dhaka",
+    role: "HSC student · Chattogram",
     rating: 5,
     quote:
       "I found my Higher Math tutor in one evening. The batch details were honest, the fee was clear, and my grade went from B to A in two months.",

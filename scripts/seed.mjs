@@ -125,7 +125,7 @@ const tuitionSeed = [
     subject: "Mathematics",
     classLevel: "Class 9-10",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 3500,
     daysPerWeek: 3,
     bannerImage:
@@ -141,7 +141,7 @@ const tuitionSeed = [
     subject: "Physics",
     classLevel: "HSC",
     mode: "Offline",
-    location: "Dhanmondi, Dhaka",
+    location: "Agrabad, Chattogram",
     monthlyFee: 4500,
     daysPerWeek: 3,
     bannerImage:
@@ -157,7 +157,7 @@ const tuitionSeed = [
     subject: "Chemistry",
     classLevel: "Admission",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 4000,
     daysPerWeek: 2,
     bannerImage:
@@ -173,7 +173,7 @@ const tuitionSeed = [
     subject: "IELTS",
     classLevel: "IELTS",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 6000,
     daysPerWeek: 4,
     bannerImage:
@@ -189,7 +189,7 @@ const tuitionSeed = [
     subject: "Programming",
     classLevel: "University",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 5000,
     daysPerWeek: 2,
     bannerImage:
@@ -205,7 +205,7 @@ const tuitionSeed = [
     subject: "Biology",
     classLevel: "Admission",
     mode: "Offline",
-    location: "Mirpur, Dhaka",
+    location: "Khulshi, Chattogram",
     monthlyFee: 5500,
     daysPerWeek: 4,
     bannerImage:
@@ -221,7 +221,7 @@ const tuitionSeed = [
     subject: "English",
     classLevel: "Class 6-8",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 2500,
     daysPerWeek: 2,
     bannerImage:
@@ -237,7 +237,7 @@ const tuitionSeed = [
     subject: "Accounting",
     classLevel: "HSC",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 3000,
     daysPerWeek: 3,
     bannerImage:
@@ -253,7 +253,7 @@ const tuitionSeed = [
     subject: "Mathematics",
     classLevel: "Class 1-5",
     mode: "Offline",
-    location: "Uttara, Dhaka",
+    location: "Nasirabad, Chattogram",
     monthlyFee: 2000,
     daysPerWeek: 5,
     bannerImage:
@@ -269,7 +269,7 @@ const tuitionSeed = [
     subject: "ICT",
     classLevel: "HSC",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 2800,
     daysPerWeek: 2,
     bannerImage:
@@ -285,7 +285,7 @@ const tuitionSeed = [
     subject: "English",
     classLevel: "Adult",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 4500,
     daysPerWeek: 2,
     bannerImage:
@@ -301,7 +301,7 @@ const tuitionSeed = [
     subject: "Mathematics",
     classLevel: "Admission",
     mode: "Offline",
-    location: "Farmgate, Dhaka",
+    location: "Chawkbazar, Chattogram",
     monthlyFee: 5000,
     daysPerWeek: 3,
     bannerImage:
@@ -317,7 +317,7 @@ const tuitionSeed = [
     subject: "Science",
     classLevel: "Class 6-8",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 2600,
     daysPerWeek: 2,
     bannerImage:
@@ -333,7 +333,7 @@ const tuitionSeed = [
     subject: "Business Studies",
     classLevel: "HSC",
     mode: "Offline",
-    location: "Mohammadpur, Dhaka",
+    location: "Pahartali, Chattogram",
     monthlyFee: 3200,
     daysPerWeek: 2,
     bannerImage:
@@ -349,7 +349,7 @@ const tuitionSeed = [
     subject: "Chemistry",
     classLevel: "Olympiad",
     mode: "Online",
-    location: "Dhaka",
+    location: "Chattogram",
     monthlyFee: 7000,
     daysPerWeek: 1,
     bannerImage:
