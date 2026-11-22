@@ -4,6 +4,11 @@ A full-stack tuition marketplace for Bangladesh, built with **Next.js 16 (App Ro
 
 This repository is the **client**. The API lives in `../mentorlagbe-server`.
 
+- **Live site:** https://mentorlagbe-client-cyan.vercel.app
+- **Live API:** https://mentorlagbe-server-five.vercel.app
+- **Client repo:** https://github.com/Sadia-IoT/mentorlagbe-client
+- **Server repo:** https://github.com/Sadia-IoT/mentorlagbe-server
+
 ---
 
 ## 1. Design concept — “Academic Editorial”
