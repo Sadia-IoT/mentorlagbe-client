@@ -37,10 +37,12 @@ export default function Navbar() {
 
   const user = session?.user;
 
-  useEffect(() => {
-    setMenuOpen(false);
-    setMobileOpen(false);
-  }, [pathname]);
+  function closeMenusOnLink(event) {
+    if (event.target.closest("a")) {
+      setMenuOpen(false);
+      setMobileOpen(false);
+    }
+  }
 
   useEffect(() => {
     function onClick(event) {
@@ -62,7 +64,10 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
+    <header
+      onClick={closeMenusOnLink}
+      className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md"
+    >
       <div className="container-ml flex h-16 items-center justify-between gap-4">
         <Logo />
 

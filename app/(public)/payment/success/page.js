@@ -18,16 +18,14 @@ import { formatUSD } from "@/lib/utils";
 function VerifyPayment() {
   const params = useSearchParams();
   const sessionId = params.get("session_id");
-  const [state, setState] = useState("verifying");
+  const [state, setState] = useState(sessionId ? "verifying" : "error");
   const [payment, setPayment] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(
+    sessionId ? "" : "No Stripe session id was found in the URL."
+  );
 
   useEffect(() => {
-    if (!sessionId) {
-      setState("error");
-      setMessage("No Stripe session id was found in the URL.");
-      return undefined;
-    }
+    if (!sessionId) return undefined;
 
     let active = true;
 

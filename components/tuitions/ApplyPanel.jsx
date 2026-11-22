@@ -21,12 +21,13 @@ export default function ApplyPanel({ tuitionId, tuitionTitle }) {
 
   const user = session?.user;
   const isStudent = user?.role === "student";
+  const userRole = user?.role;
 
   useEffect(() => {
     let active = true;
 
     async function checkExisting() {
-      if (!user || user.role !== "student") {
+      if (!userRole || userRole !== "student") {
         setApplication(null);
         return;
       }
@@ -49,7 +50,7 @@ export default function ApplyPanel({ tuitionId, tuitionTitle }) {
     return () => {
       active = false;
     };
-  }, [user?.email, user?.role, tuitionId]);
+  }, [userRole, tuitionId]);
 
   async function handleSubmit(event) {
     event.preventDefault();

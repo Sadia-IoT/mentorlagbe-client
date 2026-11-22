@@ -14,12 +14,13 @@ export default function BookmarkButton({ tuitionId }) {
   const [ready, setReady] = useState(false);
 
   const user = session?.user;
+  const userRole = user?.role;
 
   useEffect(() => {
     let active = true;
 
     async function check() {
-      if (!user || user.role !== "student") {
+      if (!userRole || userRole !== "student") {
         setReady(true);
         return;
       }
@@ -40,7 +41,7 @@ export default function BookmarkButton({ tuitionId }) {
     return () => {
       active = false;
     };
-  }, [user?.email, user?.role, tuitionId]);
+  }, [userRole, tuitionId]);
 
   if (!user || user.role !== "student") return null;
 
