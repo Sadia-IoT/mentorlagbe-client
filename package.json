@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "node scripts/seed.mjs"
   },
   "dependencies": {
     "better-auth": "^1.7.27",
+    "lucide-react": "^1.77.0",
     "mongodb": "^7.9.1",
     "next": "16.4.6",
     "react": "19.3.0",
