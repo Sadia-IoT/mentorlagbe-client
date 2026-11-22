@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* MentorLagbe design tokens — "Academic Editorial"                    */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #faf6ee;
+  --surface: #ffffff;
+  --surface-2: #f3ece0;
+  --line: #e4d9c6;
+  --fg: #12211d;
+  --muted: #66756f;
+  --brand: #0e7c66;
+  --brand-dark: #0a5c4c;
+  --brand-soft: #e2f1ec;
+  --accent: #e8a33d;
+  --accent-soft: #fbefd8;
+  --danger: #b4442a;
+  --danger-soft: #fbe9e4;
+  --ink: #12211d;
+  --cream: #faf6ee;
+}
+
+.dark {
+  --bg: #0b1512;
+  --surface: #11201c;
+  --surface-2: #172b25;
+  --line: #263b34;
+  --fg: #f3eee4;
+  --muted: #9daca6;
+  --brand: #34b096;
+  --brand-dark: #2a917c;
+  --brand-soft: #123b33;
+  --accent: #f0b95e;
+  --accent-soft: #3a2c14;
+  --danger: #e2785c;
+  --danger-soft: #3a1e17;
+  --ink: #12211d;
+  --cream: #faf6ee;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-card: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 45%, transparent);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-ml {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-ml {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Subtle printed-paper dot grid */
+  .paper-dots {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      color-mix(in srgb, var(--fg) 13%, transparent) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+  }
+
+  /* Amber highlighter behind a word */
+  .highlight {
+    background-image: linear-gradient(
+      transparent 58%,
+      color-mix(in srgb, var(--accent) 60%, transparent) 58%,
+      color-mix(in srgb, var(--accent) 60%, transparent) 92%,
+      transparent 92%
+    );
+    padding-inline: 0.1em;
+  }
+
+  /* Masking-tape corners for the hero collage */
+  .tape::before,
+  .tape::after {
+    content: "";
+    position: absolute;
+    width: 68px;
+    height: 20px;
+    background: color-mix(in srgb, var(--accent) 55%, #fff);
+    opacity: 0.85;
+    z-index: 20;
+  }
+
+  .tape::before {
+    top: -8px;
+    left: 18px;
+    transform: rotate(-5deg);
+  }
+
+  .tape::after {
+    bottom: -8px;
+    right: 18px;
+    transform: rotate(4deg);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease both;
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-floaty,
+  .animate-fade-up,
+  .animate-marquee {
+    animation: none;
+  }
 }
