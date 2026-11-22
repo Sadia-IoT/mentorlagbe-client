@@ -126,7 +126,7 @@ cp .env.example .env.local   # then fill in real values
 npm run seed
 ```
 
-This creates **1 admin, 6 tutors, 6 students, 15 tuitions (12 approved), 8 applications (3 with reviews), 4 payments and bookmarks** using Better Auth’s real sign-up API, so every demo password works.
+This creates **1 admin, 6 tutors, 6 students, 15 tuitions (12 approved), 8 applications (3 with reviews), 5 payments and bookmarks** using Better Auth’s real sign-up API, so every demo password works.
 
 ### Run
 

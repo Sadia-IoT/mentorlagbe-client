@@ -94,7 +94,7 @@ const tutorSeed = [
   {
     name: "Farhana Akter",
     email: "tutor5@mentorlagbe.dev",
-    plan: "free",
+    plan: "pro",
     phone: "+8801711000005",
     bio: "IELTS 8.5 trainer. Focused on speaking fluency and band-7+ writing structures.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80",
@@ -344,9 +344,9 @@ const tuitionSeed = [
     isActive: true,
   },
   {
-    tutor: 1,
-    title: "Physics Olympiad Preparation",
-    subject: "Physics",
+    tutor: 2,
+    title: "Chemistry Olympiad Preparation",
+    subject: "Chemistry",
     classLevel: "Olympiad",
     mode: "Online",
     location: "Dhaka",
@@ -355,7 +355,7 @@ const tuitionSeed = [
     bannerImage:
       "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80",
     description:
-      "Advanced problem solving for physics Olympiad aspirants.",
+      "Advanced problem solving for chemistry Olympiad aspirants — stoichiometry, organic mechanisms and timed mock rounds.",
     approvalStatus: "rejected",
     isActive: true,
   },
@@ -465,6 +465,17 @@ const paymentSeed = [
     transactionId: "pi_seed_sadia_002",
     stripeSessionId: "cs_test_seed_sadia_002",
     paidAt: new Date(Date.now() - 8 * 86400000),
+  },
+  {
+    userEmail: "tutor5@mentorlagbe.dev",
+    userName: "Farhana Akter",
+    userRole: "tutor",
+    planName: "Pro Tutor",
+    amount: 15,
+    currency: "USD",
+    transactionId: "pi_seed_farhana_005",
+    stripeSessionId: "cs_test_seed_farhana_005",
+    paidAt: new Date(Date.now() - 6 * 86400000),
   },
   {
     userEmail: "student2@mentorlagbe.dev",
