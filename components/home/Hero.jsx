@@ -28,7 +28,7 @@ export default function Hero({ stats, subjects }) {
           <h1 className="mt-5 text-[40px] leading-[1.04] sm:text-[54px] lg:text-[62px]">
             Find the mentor
             <br className="hidden sm:block" /> who makes it{" "}
-            <span className="highlight font-medium italic text-brand">click</span>.
+            <span className="font-medium italic text-brand">click</span>.
           </h1>
 
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
