@@ -250,8 +250,8 @@ export default function MyApplicationsPage() {
         description={cancelTarget?.tuitionTitle}
       >
         <p className="text-sm text-muted">
-          You can apply again later, but you will lose your place in the tutor's
-          queue.
+          You can apply again later, but you will lose your place in the
+          tutor&apos;s queue.
         </p>
         <div className="mt-5 flex gap-3">
           <Button variant="outline" className="flex-1" onClick={() => setCancelTarget(null)}>

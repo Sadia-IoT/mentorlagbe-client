@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import DashboardShell from "@/components/dashboard/DashboardShell";
@@ -12,5 +12,12 @@ export default async function DashboardLayout({ children }) {
     redirect("/sign-in?redirect=/dashboard");
   }
 
-  return <DashboardShell user={session.user}>{children}</DashboardShell>;
+  const cookieStore = await cookies();
+  const initialCollapsed = cookieStore.get("ml-sidebar")?.value === "collapsed";
+
+  return (
+    <DashboardShell user={session.user} initialCollapsed={initialCollapsed}>
+      {children}
+    </DashboardShell>
+  );
 }

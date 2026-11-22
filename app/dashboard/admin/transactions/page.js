@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CreditCard, Receipt, Search, Wallet } from "lucide-react";
 import PageHeader from "@/components/dashboard/PageHeader";
 import ErrorNote from "@/components/dashboard/ErrorNote";
@@ -30,10 +30,6 @@ export default function AdminTransactionsPage() {
 
   const transactions = data?.transactions || [];
   const totalPages = data?.totalPages || 0;
-
-  useEffect(() => {
-    setPage(1);
-  }, [query]);
 
   return (
     <div>
@@ -77,6 +73,7 @@ export default function AdminTransactionsPage() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          setPage(1);
           setQuery(search.trim());
         }}
         className="mb-5 flex gap-2"

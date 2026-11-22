@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Search, ShieldCheck, Users } from "lucide-react";
 import PageHeader from "@/components/dashboard/PageHeader";
@@ -13,7 +13,7 @@ import Badge, { RoleBadge } from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Avatar from "@/components/layout/Avatar";
 import { Input, Select } from "@/components/ui/Field";
-import { cn, formatDate, titleCase } from "@/lib/utils";
+import { formatDate, titleCase } from "@/lib/utils";
 
 const ROLES = ["student", "tutor", "admin"];
 const LIMIT = 10;
@@ -35,12 +35,9 @@ export default function AdminUsersPage() {
   const users = data?.users || [];
   const totalPages = data?.totalPages || 0;
 
-  useEffect(() => {
-    setPage(1);
-  }, [query, role]);
-
   function handleSearch(event) {
     event.preventDefault();
+    setPage(1);
     setQuery(search.trim());
   }
 
@@ -86,7 +83,13 @@ export default function AdminUsersPage() {
         </label>
         <label>
           <span className="sr-only">Role</span>
-          <Select value={role} onChange={(event) => setRole(event.target.value)}>
+          <Select
+            value={role}
+            onChange={(event) => {
+              setRole(event.target.value);
+              setPage(1);
+            }}
+          >
             <option value="">All roles</option>
             {ROLES.map((item) => (
               <option key={item} value={item}>

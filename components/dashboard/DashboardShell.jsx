@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -21,7 +21,7 @@ import ThemeToggle from "@/components/layout/ThemeToggle";
 import { RoleBadge } from "@/components/ui/Badge";
 import { cn, titleCase } from "@/lib/utils";
 
-function NavList({ items, pathname, collapsed = false }) {
+function NavList({ items, pathname, collapsed = false, onNavigate }) {
   return (
     <nav className="flex-1 space-y-1 overflow-y-auto p-3">
       {!collapsed ? (
@@ -39,6 +39,7 @@ function NavList({ items, pathname, collapsed = false }) {
             key={item.href}
             href={item.href}
             title={item.label}
+            onClick={onNavigate}
             className={cn(
               "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition",
               active
@@ -103,10 +104,10 @@ function UserCard({ user }) {
   );
 }
 
-export default function DashboardShell({ user, children }) {
+export default function DashboardShell({ user, children, initialCollapsed = false }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(Boolean(initialCollapsed));
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const items = dashboardNav[user.role] || dashboardNav.student;
@@ -115,25 +116,15 @@ export default function DashboardShell({ user, children }) {
     items.find((item) => item.href !== items[0].href && pathname.startsWith(item.href)) ||
     items[0];
 
-  useEffect(() => {
-    try {
-      setCollapsed(localStorage.getItem("ml-sidebar") === "collapsed");
-    } catch {
-      /* ignore */
-    }
-  }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   function toggleCollapse() {
     const next = !collapsed;
     setCollapsed(next);
     try {
-      localStorage.setItem("ml-sidebar", next ? "collapsed" : "open");
+      document.cookie = `ml-sidebar=${
+        next ? "collapsed" : "open"
+      }; path=/; max-age=31536000; SameSite=Lax`;
     } catch {
-      /* ignore */
+      /* cookies may be blocked — the sidebar still toggles for this visit */
     }
   }
 
@@ -242,7 +233,11 @@ export default function DashboardShell({ user, children }) {
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <NavList items={items} pathname={pathname} />
+            <NavList
+              items={items}
+              pathname={pathname}
+              onNavigate={() => setMobileOpen(false)}
+            />
             <div className="border-t border-line p-3">
               <UserCard user={user} />
               <div className="mt-2 flex items-center justify-between">

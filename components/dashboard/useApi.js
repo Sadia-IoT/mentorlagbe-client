@@ -6,29 +6,48 @@ import { apiFetch } from "@/lib/api";
 /**
  * Small data hook for dashboard pages.
  * `path` may be null to skip loading (e.g. waiting for a role).
+ *
+ * Loading is derived from the last resolved path, so switching filters shows
+ * the skeleton immediately without calling setState synchronously in an effect.
  */
 export function useApi(path, { enabled = true } = {}) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(Boolean(path) && enabled);
-  const [error, setError] = useState(null);
+  const [state, setState] = useState({ path: null, data: null, error: null });
 
-  const load = useCallback(async () => {
-    if (!path || !enabled) return;
-    setLoading(true);
+  useEffect(() => {
+    if (!path || !enabled) return undefined;
+    let active = true;
+
+    apiFetch(path)
+      .then((result) => {
+        if (active) setState({ path, data: result, error: null });
+      })
+      .catch((err) => {
+        if (active) setState({ path, data: null, error: err });
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [path, enabled]);
+
+  const reload = useCallback(async () => {
+    if (!path || !enabled) return null;
     try {
       const result = await apiFetch(path);
-      setData(result);
-      setError(null);
+      setState({ path, data: result, error: null });
+      return result;
     } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
+      setState({ path, data: null, error: err });
+      return null;
     }
   }, [path, enabled]);
 
-  useEffect(() => {
-    load();
-  }, [load]);
+  const ready = state.path === path;
 
-  return { data, loading, error, reload: load, setData };
+  return {
+    data: ready ? state.data : null,
+    loading: Boolean(path) && enabled && !ready,
+    error: ready ? state.error : null,
+    reload,
+  };
 }

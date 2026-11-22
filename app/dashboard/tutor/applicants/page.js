@@ -26,7 +26,7 @@ export default function ApplicantsPage() {
   const [tab, setTab] = useState("all");
   const [busyId, setBusyId] = useState(null);
 
-  const applications = data || [];
+  const applications = useMemo(() => data || [], [data]);
 
   const counts = useMemo(() => {
     return {

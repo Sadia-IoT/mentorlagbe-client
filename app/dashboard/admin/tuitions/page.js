@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
@@ -51,10 +51,6 @@ function ModerationBoard() {
   const tuitions = data?.tuitions || [];
   const totalPages = data?.totalPages || 0;
 
-  useEffect(() => {
-    setPage(1);
-  }, [status, query]);
-
   async function moderate(tuition, approvalStatus) {
     setBusyId(tuition._id);
     try {
@@ -93,7 +89,10 @@ function ModerationBoard() {
             <button
               key={tab}
               type="button"
-              onClick={() => setStatus(tab)}
+              onClick={() => {
+                setStatus(tab);
+                setPage(1);
+              }}
               className={cn(
                 "shrink-0 rounded-full border px-4 py-2 text-xs font-semibold capitalize transition",
                 status === tab
@@ -109,6 +108,7 @@ function ModerationBoard() {
         <form
           onSubmit={(event) => {
             event.preventDefault();
+            setPage(1);
             setQuery(search.trim());
           }}
           className="flex gap-2"
