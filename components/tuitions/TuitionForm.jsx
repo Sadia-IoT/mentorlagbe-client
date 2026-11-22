@@ -300,7 +300,7 @@ export default function TuitionForm({ mode = "create", tuition = null }) {
                 id="bannerImage"
                 value={values.bannerImage}
                 onChange={(event) => update("bannerImage", event.target.value)}
-                placeholder="https://i.ibb.co/…"
+                placeholder="https://res.cloudinary.com/your-cloud/image/upload/photo.jpg"
               />
             </Field>
 

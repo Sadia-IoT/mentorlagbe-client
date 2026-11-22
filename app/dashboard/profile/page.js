@@ -192,7 +192,7 @@ function ProfileEditor({ user, onSaved }) {
               id="image"
               value={image}
               onChange={(event) => setImage(event.target.value)}
-              placeholder="https://i.ibb.co/…"
+              placeholder="https://res.cloudinary.com/your-cloud/image/upload/photo.jpg"
             />
           </Field>
         </section>
