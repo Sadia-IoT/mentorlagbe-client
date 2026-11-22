@@ -130,7 +130,7 @@ function ProfileEditor({ user, onSaved }) {
         <section className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
           <h3 className="font-display text-lg">Profile photo</h3>
           <p className="mt-1 text-xs text-muted">
-            Square images look best. Uploads are stored on ImgBB (max 5 MB).
+            Square images look best. Uploads are stored in the cloud (max 5 MB).
           </p>
 
           <div className="mt-4 flex flex-wrap items-center gap-5">

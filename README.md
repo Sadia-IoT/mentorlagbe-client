@@ -57,7 +57,7 @@ Signature details:
 ### Tutor dashboard
 
 - Overview stats, free-post quota banner, recent applicants.
-- Post a tuition — validated form, **ImgBB file upload** or URL, pending-review notice.
+- Post a tuition — validated form, **cloud file upload** or URL, pending-review notice.
 - My tuitions — edit, close/reopen, delete (with confirmation), rejection feedback.
 - Applicants — status tabs, accept/reject, phone + schedule + note.
 
@@ -90,7 +90,7 @@ Signature details:
 - **Better Auth 1.7** — email/password, MongoDB adapter, JWT plugin
 - **lucide-react** icons, **react-hot-toast** notifications
 - **Stripe Checkout** (test mode) through the Express API
-- **ImgBB** uploads proxied through the Express API (API key never reaches the browser)
+- **Cloudinary** unsigned uploads proxied through the Express API (ImgBB fallback; no provider key reaches the browser)
 
 Auth architecture:
 
@@ -208,7 +208,7 @@ scripts/seed.mjs
 
 ### Demo limitations
 
-- `STRIPE_SECRET_KEY` and `IMGBB_API_KEY` ship as placeholders. Without real keys, checkout and uploads return **503** with a clear message; every other flow works.
+- `STRIPE_SECRET_KEY`, `CLOUDINARY_CLOUD_NAME` and `CLOUDINARY_UPLOAD_PRESET` ship as placeholders. Without real values, checkout and uploads return **503** with a clear message; every other flow works.
 - Stripe runs in **test mode** — use card `4242 4242 4242 4242`.
 - Pro is modelled as a one-time upgrade (`plan: "pro"`), not a recurring subscription.
 
@@ -219,6 +219,6 @@ scripts/seed.mjs
 - 4 business collections: `users`, `tuitions`, `applications`, `payments` (Better Auth adds its internal session/account collections).
 - JWT-protected API with `verifyToken`, `verifyStudent`, `verifyTutor`, `verifyAdmin`.
 - Server-side search, filtering and pagination on browse, admin users, moderation and transactions.
-- Real image upload to ImgBB through the API proxy.
+- Real image upload through the API proxy (Cloudinary unsigned preset, ImgBB fallback).
 - 20+ client commits and 12+ server commits, each one a self-contained feature.
 - Responsive at 360 px → 1440 px, equal-height cards, consistent heading/button system, custom loading/error/404 pages, toast feedback everywhere.

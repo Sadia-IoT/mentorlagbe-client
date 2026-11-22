@@ -60,7 +60,7 @@ export default function TuitionForm({ mode = "create", tuition = null }) {
     try {
       const url = await uploadImage(file);
       update("bannerImage", url);
-      toast.success("Banner uploaded to ImgBB");
+      toast.success("Banner uploaded");
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -255,7 +255,7 @@ export default function TuitionForm({ mode = "create", tuition = null }) {
       <div className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
         <h3 className="font-display text-lg">Banner image</h3>
         <p className="mt-1 text-xs text-muted">
-          Upload a photo (max 5 MB) or paste an image URL. Uploads go to ImgBB.
+          Upload a photo (max 5 MB) or paste an image URL. Uploads go to the cloud.
         </p>
 
         <div className="mt-4 grid gap-4 sm:grid-cols-[220px_1fr] sm:items-start">
