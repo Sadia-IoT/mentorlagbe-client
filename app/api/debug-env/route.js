@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { auth } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -28,5 +29,18 @@ export async function GET() {
       .slice(0, 200);
   }
 
-  return Response.json({ presence, db });
+  let jwks;
+  try {
+    const result = await auth.api.getJwks();
+    jwks = { ok: true, keys: result?.keys?.length ?? 0 };
+  } catch (error) {
+    jwks = {
+      ok: false,
+      error: String(error?.stack || error)
+        .replace(/mongodb(\+srv)?:\/\/[^@\s]+@/g, "mongodb://<redacted>@")
+        .slice(0, 800),
+    };
+  }
+
+  return Response.json({ presence, db, jwks });
 }
